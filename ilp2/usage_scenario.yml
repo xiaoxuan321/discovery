@@ -1,0 +1,47 @@
+---
+name: ilp
+author: Cosmo
+version: 2
+description: Discover petri net using ilp.
+
+services:
+  BPIC15_5f_Container:
+    build:
+      context: .
+  BPIC17_f_Container:
+    build:
+      context: .
+  RTFMP_Container:
+    build:
+      context: .
+  SEPSIS_Container:
+    build:
+      context: .
+
+
+flow:
+  - name: Test BPIC15_5f
+    container: BPIC15_5f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC15_5f
+        note: Running BPIC15_5f_Container
+  - name: Test BPIC17_f
+    container: BPIC17_f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC17_f
+        note: Running BPIC17_f_Container
+  - name: Test RTFMP
+    container: RTFMP_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py RTFMP
+        note: Running RTFMP_Container
+  - name: Test SEPSIS
+    container: SEPSIS_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py SEPSIS
+        note: Running SEPSIS_Container
+

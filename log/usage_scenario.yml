@@ -1,0 +1,38 @@
+---
+name: log
+author: Betty
+version: 1
+description: Discover log skeleton.
+
+services:
+  BPIC12_Container:
+    build:
+      context: .
+  BPIC13_cp_Container:
+    build:
+      context: .
+  BPIC13_i_Container:
+    build:
+      context: .
+
+
+flow:
+  - name: Test BPIC12
+    container: BPIC12_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC12
+        note: Running BPIC12_Container
+  - name: Test BPIC13_cp
+    container: BPIC13_cp_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC13_cp
+        note: Running BPIC13_cp_Container
+  - name: Test BPIC13_i
+    container: BPIC13_i_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC13_i
+        note: Running BPIC13_i_Container
+

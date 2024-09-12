@@ -1,0 +1,65 @@
+---
+name: ilp
+author: Cosmo
+version: 1
+description: Discover petri net using ilp.
+
+services:
+  BPIC12_Container:
+    build:
+      context: .    # 确保context路径正确，即使Dockerfile在项目的当前目录
+  BPIC13_cp_Container:
+    build:
+      context: .
+  BPIC13_i_Container:
+    build:
+      context: .
+  BPIC14_f_Container:
+    build:
+      context: .
+  BPIC15_1f_Container:
+    build:
+      context: .
+  BPIC15_2f_Container:
+    build:
+      context: .
+
+
+flow:
+  - name: Test BPIC12
+    container: BPIC12_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC12
+        note: Running BPIC12_Container
+  - name: Test BPIC13_cp
+    container: BPIC13_cp_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC13_cp
+        note: Running BPIC13_cp_Container
+  - name: Test BPIC13_i
+    container: BPIC13_i_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC13_i
+        note: Running BPIC13_i_Container
+  - name: Test BPIC14_f
+    container: BPIC14_f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC14_f
+        note: Running BPIC14_f_Container
+  - name: Test BPIC15_1f
+    container: BPIC15_1f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC15_1f
+        note: Running BPIC15_1f_Container
+  - name: Test BPIC15_2f
+    container: BPIC15_2f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC15_2f
+        note: Running BPIC15_2f_Container
+

@@ -1,0 +1,28 @@
+---
+name: ilp
+author: Cosmo
+version: 1
+description: Discover petri net using ilp.
+
+services:
+  BPIC15_3f_Container:
+    build:
+      context: .    # 确保context路径正确，即使Dockerfile在项目的当前目录
+  BPIC15_4f_Container:
+    build:
+      context: .
+
+flow:
+  - name: Test BPIC15_3f
+    container: BPIC15_3f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC15_3f
+        note: Running BPIC15_3f_Container
+  - name: Test BPIC15_4f
+    container: BPIC15_4f_Container
+    commands:
+      - type: console
+        command: python /app/algorithm.py BPIC15_4f
+        note: Running BPIC15_4f_Container
+
